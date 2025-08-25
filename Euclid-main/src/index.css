@@ -1,0 +1,175 @@
+/* Euclid Design System - Luxurious Dark Aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Dark Theme - Deep Space Aesthetic */
+    --background: 222 10% 4%;
+    --background-subtle: 222 10% 6%;
+    --background-muted: 222 8% 8%;
+    --foreground: 220 15% 96%;
+    --foreground-muted: 220 10% 80%;
+    --foreground-subtle: 220 8% 65%;
+
+    /* Premium card system */
+    --card: 222 10% 6%;
+    --card-hover: 222 12% 8%;
+    --card-border: 220 8% 12%;
+    --card-foreground: 220 15% 96%;
+
+    /* Luxury purple-blue gradient system */
+    --primary: 250 80% 60%;
+    --primary-bright: 250 90% 70%;
+    --primary-muted: 250 50% 40%;
+    --primary-foreground: 220 15% 96%;
+    
+    /* Secondary premium grays */
+    --secondary: 222 8% 12%;
+    --secondary-hover: 222 10% 15%;
+    --secondary-foreground: 220 10% 80%;
+
+    /* Accent system for highlights */
+    --accent: 280 70% 65%;
+    --accent-bright: 280 80% 75%;
+    --accent-muted: 280 40% 45%;
+    --accent-foreground: 220 15% 96%;
+
+    /* Status colors */
+    --success: 145 65% 55%;
+    --success-muted: 145 45% 35%;
+    --warning: 45 90% 65%;
+    --warning-muted: 45 70% 45%;
+    --destructive: 0 75% 60%;
+    --destructive-muted: 0 55% 40%;
+
+    /* Interface elements */
+    --border: 220 8% 12%;
+    --border-subtle: 220 6% 10%;
+    --input: 222 8% 8%;
+    --input-border: 220 8% 15%;
+    --ring: 250 80% 60%;
+
+    /* Additional shadcn variables */
+    --muted: 222 8% 12%;
+    --muted-foreground: 220 10% 80%;
+    --popover: 222 10% 6%;
+    --popover-foreground: 220 15% 96%;
+
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background-subtle)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--background-muted)));
+    
+    /* Shadows and glows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+    --shadow-card: 0 10px 30px -10px hsl(220 8% 4% / 0.8);
+    --glow-primary: 0 0 30px hsl(var(--primary) / 0.4);
+    --glow-accent: 0 0 20px hsl(var(--accent) / 0.3);
+
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: hsl(var(--background));
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-muted));
+  }
+}
+
+@layer components {
+  /* Premium glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Luxury glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Premium text gradients */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Luxury hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  /* Premium button effects */
+  .btn-luxury {
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  .btn-luxury:hover::before {
+    left: 100%;
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-luxury);
+  }
+}
